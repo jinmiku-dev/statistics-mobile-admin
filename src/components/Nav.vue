@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
       <div class="flex">
-          <span @click="operation">{{ selectIcon }}</span>
+          <span :class="selectIcon" @click="operation"></span>
           <h1>{{ title }}</h1>
       </div>
   </div>
@@ -24,11 +24,11 @@ export default {
     selectIcon: function () { 
         switch (this.icon) {
             case 'user':
-                return '用户';
+                return 'iconfont iconuser';
             case 'back':
-                return '返回';
+                return 'iconfont iconfanhui';
             case 'none':
-                return '';
+                return 'none';
         }
     }
   },
@@ -46,7 +46,7 @@ export default {
           }
       },
       userFrame() {
-
+          this.$emit('frameChange', true);
       },
       goBack() {
           this.$router.back();
@@ -58,12 +58,19 @@ export default {
 <style scoped lang="less">
 .nav {
     position: relative;
+    padding: 10px 10px;
+    margin-bottom: 10px;
     span {
         position: absolute;
-        width: 40px;
+        top: 10px;
+        left: 10px;
+        width: 20px;
         height: 20px;
         line-height: 20px;
-        font-size: 16px;
+        font-size: 20px;
+        &.none {
+            display: none;
+        }
     }
     h1 {
         font-size: 16px;

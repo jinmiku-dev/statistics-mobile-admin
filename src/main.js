@@ -3,9 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { getToken, setToken } from '@/utils/auth' // 验权(从cookie中获取)
+import { getToken } from '@/utils/auth'; // 验权(从cookie中获取)
 
-setToken('Token', '123456')
+import Calendar from 'vue-mobile-calendar';
+Vue.use(Calendar);
 
 router.beforeEach((to, from, next) => {
     if (to.path === '/login') {

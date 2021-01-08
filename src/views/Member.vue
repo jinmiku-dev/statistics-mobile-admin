@@ -1,7 +1,6 @@
 <template>
   <div class="member">
-    <Calendar></Calendar>
-
+    <calendar mode="during" :show='show' @change="onChange"/>
     <Comparison date="week" :contentData="content"></Comparison>
     <Chart chartId="line" chartClass="member-line" :chartOption="lineOption"></Chart>
     <Chart chartId="pie" chartClass="member-pie" :chartOption="pieOption"></Chart>
@@ -10,13 +9,11 @@
 
 <script>
     import Chart from '@/components/echarts/Chart';
-    import Calendar from '@/components/Calendar';
     import Comparison from '@/components/Comparison';
 
     export default {
         components: {
             Chart,
-            Calendar,
             Comparison
         },
         data() {
@@ -133,15 +130,7 @@
                         name: '付费会员'
                     },
                 ],
-                example: { 
-                    title: 'First Day Of Week',
-                    inputClass: 'exampleDatePicker',
-                    lang: 'zh',
-                    position: 'bottom',
-                    range: true,
-                    value: [1610011919000, 1610041919000],
-                    firstDayOfWeek: 'sunday'
-                }
+                show: true
             }
         },
         methods: {
@@ -166,7 +155,10 @@
                         }
                     ]
                 }
-            }
+            },
+            onChange(date) {
+                console.log(date);
+            },
         }
     }
 </script>
