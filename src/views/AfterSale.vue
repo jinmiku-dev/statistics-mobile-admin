@@ -1,5 +1,6 @@
 <template>
   <div class="after-sales">
+    <Comparison date="week" :contentData="content"></Comparison>
     <Chart chartId="line" chartClass="after-sales-line" :chartOption="lineOption"></Chart>
   </div>
 </template>
@@ -53,6 +54,26 @@ export default {
                     }
                 ]
             },
+            content: [
+                {
+                    sum: 24,
+                    change: 'add',
+                    amount: 199,
+                    name: '会员总数'
+                },
+                {
+                    sum: 4,
+                    change: 'sub',
+                    amount: 22,
+                    name: '关注公众号'
+                },
+                {
+                    sum: 1,
+                    change: 'add',
+                    amount: 8,
+                    name: '付费会员'
+                }
+            ]
         }
     },
 }

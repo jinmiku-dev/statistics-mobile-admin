@@ -1,60 +1,68 @@
 <template>
-  <div class="comparison">
-      <div class="flex">
-          <div class="item" v-for="(item, index) in contentData" :key="index">
-            <div>
-                <div class="time">{{ selectDate }}{{ item.change | variation }}{{ item.sum }}</div>
-                <div class="number">{{ item.amount }}</div>
-                <div class="name">{{ item.name }}</div>
+    <div class="comparison">
+        <div class="flex">
+            <div class="item" v-for="(item, index) in contentData" :key="index">
+                <div>
+                    <div class="time">
+                        {{ selectDate }}
+                        {{ item.change | variation }}
+                        {{ item.sum }}
+                    </div>
+                    <div class="number">{{ item.amount }}</div>
+                    <div class="name" :class="compStyle">{{ item.name }}</div>
+                </div>
             </div>
-          </div>
-      </div>
-  </div>
+        </div>
+    </div>
 </template>
 
 <script>
-    export default {
-        name: 'Comparison',
-        props: {
-            contentData: {
-                type: Array,
-                default: () => {}
-            },
-            date: {
-                type: String,
-                default: 'week'
-            }
+export default {
+    name: "Comparison",
+    props: {
+        contentData: {
+            type: Array,
+            default: () => {}
         },
-        filters: {
-            variation: function (param) { 
-                switch (param) {
-                    case 'add':
-                        return ' + ';
-                    case 'sub':
-                        return ' - ';
-                    default:
-                        return ' ';
-                }
-            }
+        date: {
+            type: String,
+            default: "week"
         },
-        computed: {
-            selectDate: function () { 
-                switch (this.date) {
-                    case 'day':
-                        return '较前日';
-                    case 'week':
-                        return '较上周';
-                    case 'month':
-                        return '较上月';
-                    case 'year':
-                        return '较上年';
-                    default:
-                        return '';
-                }
+        compStyle: {
+            type: String,
+            default: ""
+        }
+    },
+    filters: {
+        variation: function(param) {
+            switch (param) {
+                case "add":
+                    return " + ";
+                case "sub":
+                    return " - ";
+                default:
+                    return " ";
             }
-        },
-        methods: {}
-    }
+        }
+    },
+    computed: {
+        selectDate: function() {
+            switch (this.date) {
+                case "day":
+                    return "较前日";
+                case "week":
+                    return "较上周";
+                case "month":
+                    return "较上月";
+                case "year":
+                    return "较上年";
+                default:
+                    return "";
+            }
+        }
+    },
+    methods: {}
+};
 </script>
 
 <style scoped lang="less">
@@ -70,7 +78,7 @@
             position: relative;
         }
         .item::after {
-            content: '';
+            content: "";
             display: block;
             width: 1px;
             height: 70%;
@@ -93,6 +101,13 @@
         }
         .name {
             font-size: 12px;
+            &.reversal {
+                color: #fff;
+                background-color: rgb(80, 80, 80);
+                display: inline-block;
+                padding: 4px 10px;
+                border-radius: 8px;
+            }
         }
     }
 }

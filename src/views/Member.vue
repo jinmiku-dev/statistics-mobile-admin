@@ -1,6 +1,6 @@
 <template>
   <div class="member">
-    <calendar mode="during" :show='show' @change="onChange"/>
+    <SelectDate></SelectDate>
     <Comparison date="week" :contentData="content"></Comparison>
     <Chart chartId="line" chartClass="member-line" :chartOption="lineOption"></Chart>
     <Chart chartId="pie" chartClass="member-pie" :chartOption="pieOption"></Chart>
@@ -9,12 +9,12 @@
 
 <script>
     import Chart from '@/components/echarts/Chart';
-    import Comparison from '@/components/Comparison';
+    import SelectDate from '@/components/SelectDate';
 
     export default {
         components: {
             Chart,
-            Comparison
+            SelectDate
         },
         data() {
             return {
@@ -129,8 +129,7 @@
                         amount: 8,
                         name: '付费会员'
                     },
-                ],
-                show: true
+                ]
             }
         },
         methods: {
@@ -155,10 +154,7 @@
                         }
                     ]
                 }
-            },
-            onChange(date) {
-                console.log(date);
-            },
+            }
         }
     }
 </script>

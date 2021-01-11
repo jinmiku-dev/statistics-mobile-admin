@@ -3,10 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { getToken } from '@/utils/auth'; // 验权(从cookie中获取)
+import { getToken } from '@/utils/auth';
 
 import Calendar from 'vue-mobile-calendar';
+import Comparison from "@/components/Comparison";
+
 Vue.use(Calendar);
+Vue.component('Comparison', Comparison);
 
 router.beforeEach((to, from, next) => {
     if (to.path === '/login') {
@@ -53,11 +56,11 @@ router.afterEach((to, from) => {
             icon = 'back';
             break;
         case '/search':
-            title = '商品分析';
+            title = '搜索分析';
             icon = 'back';
             break;
         case '/after-sale':
-            title = '商品分析';
+            title = '售后分析';
             icon = 'back';
             break;
         default:

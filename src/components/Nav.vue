@@ -46,7 +46,7 @@ export default {
           }
       },
       userFrame() {
-          this.$emit('frameChange', true);
+          this.$emit('navClick', true);
       },
       goBack() {
           this.$router.back();

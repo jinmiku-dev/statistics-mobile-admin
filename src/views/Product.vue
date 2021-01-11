@@ -1,5 +1,6 @@
 <template>
   <div class="product">
+    <Comparison date="week" :contentData="content"></Comparison>
     <Chart chartId="line" chartClass="product-line" :chartOption="lineOption"></Chart>
     <Chart chartId="histogram" chartClass="product-histogram" :chartOption="histogramOption"></Chart>
   </div>
@@ -89,7 +90,27 @@
                             data: [8, 12, 31, 41, 59, 61, 70]
                         }
                     ]
+                },
+                content: [
+                {
+                    sum: 24,
+                    change: 'add',
+                    amount: 199,
+                    name: '会员总数'
+                },
+                {
+                    sum: 4,
+                    change: 'sub',
+                    amount: 22,
+                    name: '关注公众号'
+                },
+                {
+                    sum: 1,
+                    change: 'add',
+                    amount: 8,
+                    name: '付费会员'
                 }
+            ]
             }
         },
         methods: {
