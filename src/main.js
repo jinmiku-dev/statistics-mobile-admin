@@ -1,14 +1,15 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-
+import Vue from 'vue';
+import { DatePicker, Message } from 'element-ui';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 import { getToken } from '@/utils/auth';
-
-import Calendar from 'vue-mobile-calendar';
 import Comparison from "@/components/Comparison";
 
-Vue.use(Calendar);
+Vue.prototype.$message = Message;
+
+Vue.use(DatePicker);
+Vue.component('Message', Message);
 Vue.component('Comparison', Comparison);
 
 router.beforeEach((to, from, next) => {

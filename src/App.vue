@@ -51,6 +51,16 @@ export default {
 @import url('https://at.alicdn.com/t/font_2317048_4gxyn8zmg9s.css');
 body {
     background-color: #fff !important;
+
+    .el-date-picker {
+        width: 100% !important;
+    }
+    .el-picker-panel__content {
+        width: calc(100% - 30px) !important;
+    }
+    .el-date-table th {
+        text-align: center !important;
+    }
 }
 #main {
     padding: 0 15px;

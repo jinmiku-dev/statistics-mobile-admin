@@ -1,5 +1,6 @@
 <template>
   <div class="sales">
+    <SelectDate></SelectDate>
     <Comparison date="week" :contentData="content"></Comparison>
     <Chart chartId="line" chartClass="sales-line" :chartOption="lineOption"></Chart>
   </div>
@@ -7,10 +8,12 @@
 
 <script>
 import Chart from '@/components/echarts/Chart';
+import SelectDate from '@/components/SelectDate';
 
 export default {
     components: {
-        Chart
+        Chart,
+        SelectDate
     },
     data() {
         return {
