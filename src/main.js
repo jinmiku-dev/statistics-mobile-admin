@@ -5,31 +5,41 @@ import router from './router';
 import store from './store';
 import { getToken } from '@/utils/auth';
 import Comparison from "@/components/Comparison";
+import Axios from '@/utils/axios';
 
 Vue.prototype.$message = Message;
+Vue.prototype.$axios = Axios;
 
 Vue.use(DatePicker);
 Vue.component('Message', Message);
 Vue.component('Comparison', Comparison);
 
 router.beforeEach((to, from, next) => {
-    if (to.path === '/login') {
-        if (getToken('Token')) {
-            next({ path: '/' });
-        } else {
+    if (from.path === '/error' && store.getters.errorBrowser) return;
+
+    switch (to.path) {
+        case '/login':
+            if (getToken('Token')) {
+                next({ path: '/' });
+            } else {
+                next();
+            }
+            break;
+        case '/error':
             next();
-        }
-    } else {
-        if (getToken('Token')) {
-            next();
-        } else {
-            next({ path: '/login' });
-        }
+            break;
+        default:
+            if (getToken('Token')) {
+                next();
+            } else {
+                next({ path: '/login' });
+            }
+            break;
     }
 });
 
 router.afterEach((to, from) => {
-    let title, icon;
+    let title, icon, navData;
     switch (to.path) {
         case '/':
         case '/home':
@@ -65,12 +75,15 @@ router.afterEach((to, from) => {
             icon = 'back';
             break;
         default:
-            title = 'ELODIE&JO';
+            title = '';
             icon = 'none';
             break;
     }
-    store.commit('setPageName', title);
-    store.commit('setIcon', icon);
+    navData = {
+        title,
+        icon
+    }
+    store.commit('setNavData', navData);
 })
 
 

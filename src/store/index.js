@@ -5,19 +5,23 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        pageName: 'ELODIE&JO',
-        icon: 'none'
+        pageTitle: 'ELODIE&JO',
+        icon: 'none',
+        errorBrowser: false
     },
     getters: {
-        pageName: state => state.pageName,
-        icon: state => state.icon
+        pageTitle: state => state.pageTitle,
+        icon: state => state.icon,
+        errorBrowser: state => state.errorBrowser
     },
     mutations: {
-        setPageName: (state, roles) => {
-            state.pageName = roles;
+        setNavData: (state, roles) => {
+            let data = JSON.parse(JSON.stringify(roles));
+            state.pageTitle = data.title;
+            state.icon = data.icon;
         },
-        setIcon: (state, roles) => {
-            state.icon = roles;
+        setErrorBrowser: (state, roles) => {
+            state.errorBrowser = roles;
         }
     },
     actions: {

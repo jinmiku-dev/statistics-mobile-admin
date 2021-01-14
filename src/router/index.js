@@ -46,8 +46,13 @@ const routes = [
     component: () => import('../views/AfterSale.vue')
   },
   {
+    path: '/error',
+    name: 'Error',
+    component: () => import('../views/Error.vue')
+  },
+  {
     path: '*',
-    redirect: '/login'
+    redirect: '/error'
   }
 ]
 

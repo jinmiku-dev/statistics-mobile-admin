@@ -5,8 +5,9 @@ import { Message } from 'element-ui';
 
 // 创建axios实例
 let service =  axios.create({
-  baseURL: process.env.BASE_API, // api的base_url
-  timeout: 5000 // 请求超时时间
+//   baseURL: process.env.BASE_API, // api的base_url
+    baseURL: 'http://localhost:3000/', // api的base_url
+    timeout: 5000 // 请求超时时间
 })
 // request拦截器
 service.interceptors.request.use(config => {
@@ -49,6 +50,7 @@ service.interceptors.response.use(
     // } else { // res.code === 200,正常返回数据
     //     return response.data
     // }
+    return response.data
   },
   error => {
     Message({

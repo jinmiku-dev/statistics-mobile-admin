@@ -60,11 +60,11 @@ export default {
         },
         isClick() {
             if (this.time && this.isClickTimes === 0) {
-                // 开始时间存在，结束时间等于确定时间
+                // 开始时间存在，结束时间为选中时间
                 if (this.startTime) {
                     let timeArr = [new Date(this.startTime).getTime(), new Date(this.endTime).getTime()];
-                    let currentTimeArr = timeArr.sort((a, b) => { return a - b; });
-                    if (currentTimeArr[1] - currentTimeArr[0] > (31 * 24 * 60 * 60 * 1000)) {
+                    let currentTimeArr = timeArr.sort((a, b) => { return b - a; });
+                    if (currentTimeArr[0] - currentTimeArr[1] > (31 * 24 * 60 * 60 * 1000)) {
                         this.$message({
                             center: true,
                             message: "选取时间段过长，请选择一月内时间段",
@@ -74,9 +74,11 @@ export default {
                         this.isClickTimes++;
                     } else {
                         this.endTime = this.time;
+
+                        // 发起网络请求
                     }
                 } else {
-                    // 开始时间不存在，开始时间等于确定时间，且再次打开选择框选择结束时间
+                    // 开始时间不存在，开始时间为选中时间，且再次打开选择框选择结束时间
                     this.startTime = this.time;
                     this.time = '';
                     this.timeOut = setTimeout(() => {
