@@ -1,5 +1,8 @@
 <template>
     <div class="comparison">
+        <div v-if="showSelectDate">
+            <SelectDateComp></SelectDateComp>
+        </div>
         <div class="flex">
             <div class="item" v-for="(item, index) in contentData" :key="index">
                 <div>
@@ -17,12 +20,21 @@
 </template>
 
 <script>
+import SelectDateComp from '@/components/SelectDate';
+
 export default {
     name: "Comparison",
+    components: {
+        SelectDateComp
+    },
     props: {
+        showSelectDate: {
+            type: Object,
+            default: () => { return true }
+        },
         contentData: {
             type: Array,
-            default: () => {}
+            default: () => { return [] }
         },
         date: {
             type: String,

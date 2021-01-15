@@ -7,12 +7,7 @@
 </template>
 
 <script>
-import Chart from '@/components/echarts/Chart';
-
 export default {
-    components: {
-        Chart
-    },
     data() {
         return {
             lineOption: {

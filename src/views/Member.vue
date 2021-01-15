@@ -1,6 +1,5 @@
 <template>
   <div class="member">
-    <SelectDate></SelectDate>
     <Comparison date="week" :contentData="content"></Comparison>
     <Chart chartId="line" chartClass="member-line" :chartOption="lineOption"></Chart>
     <Chart chartId="pie" chartClass="member-pie" :chartOption="pieOption"></Chart>
@@ -8,14 +7,7 @@
 </template>
 
 <script>
-    import Chart from '@/components/echarts/Chart';
-    import SelectDate from '@/components/SelectDate';
-
     export default {
-        components: {
-            Chart,
-            SelectDate
-        },
         data() {
             return {
                 lineOption: {

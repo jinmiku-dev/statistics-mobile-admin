@@ -4,15 +4,20 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import { getToken } from '@/utils/auth';
-import Comparison from "@/components/Comparison";
 import Axios from '@/utils/axios';
 
 Vue.prototype.$message = Message;
 Vue.prototype.$axios = Axios;
 
+import Comparison from "@/components/Comparison";
+import Chart from '@/components/echarts/Chart';
+import SelectDate from '@/components/SelectDate';
+
 Vue.use(DatePicker);
 Vue.component('Message', Message);
 Vue.component('Comparison', Comparison);
+Vue.component('Chart', Chart);
+Vue.component('SelectDate', SelectDate);
 
 router.beforeEach((to, from, next) => {
     if (from.path === '/error' && store.getters.errorBrowser) return;

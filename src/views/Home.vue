@@ -6,6 +6,7 @@
         </div>
         <Comparison
             :contentData="content"
+            :showSelectDate="false"
             date="day"
             compStyle="reversal"
         ></Comparison>
