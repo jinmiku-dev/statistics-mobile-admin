@@ -39,7 +39,6 @@ export default {
     methods: {
         loadChart() {
             if (!this.chartOption) return;
-
             this.$nextTick(() => {
                 echarts.registerTheme('etheme', echartsTheme);
                 this.myChart = echarts.init(document.getElementById(this.chartId), 'etheme');

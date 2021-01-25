@@ -29,8 +29,8 @@ export default {
     },
     props: {
         showSelectDate: {
-            type: Object,
-            default: () => { return true }
+            type: Boolean,
+            default: true
         },
         contentData: {
             type: Array,

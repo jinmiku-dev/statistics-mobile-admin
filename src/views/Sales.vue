@@ -1,6 +1,5 @@
 <template>
   <div class="sales">
-    <SelectDate></SelectDate>
     <Comparison date="week" :contentData="content"></Comparison>
     <Chart chartId="line" chartClass="sales-line" :chartOption="lineOption"></Chart>
   </div>
